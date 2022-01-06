@@ -1,7 +1,6 @@
 // Import useState hook
 import React, { useState } from "react";
-const Form = ({ initialEmployee, handleSubmit, buttonLabel, history }) => {
-
+const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, user }) => {
   const [formData, setFormData] = useState(initialEmployee);
 
   const handleChange = (event) => {
@@ -10,102 +9,118 @@ const Form = ({ initialEmployee, handleSubmit, buttonLabel, history }) => {
 
   const handleSubmisson = (event) => {
     event.preventDefault();
+    console.log(formData)
     handleSubmit(formData);
     history.push("/");
   };
 
+  let pivot
+
+  if(formData.departing === "true"){
+    pivot = false
+  }
+  else{
+    pivot = true
+  }
+
   return (
     <form onSubmit={handleSubmisson}>
-      <input
+      Full Name<input
         type="text"
         onChange={handleChange}
         value={formData.name}
         name="name"
         placeholder="full name"
+        required
       />
-      <input
+      Job Title<input
         type="text"
         onChange={handleChange}
         value={formData.title}
         name="title"
         placeholder="job title"
+        required
       />
-            <input
+      Team<input
+        type="text"
+        onChange={handleChange}
+        value={formData.team}
+        name="team"
+        placeholder="team"
+        required
+      />
+      Location / Office<input
         type="text"
         onChange={handleChange}
         value={formData.office}
         name="office"
         placeholder="assigned office"
+        required
       />
-        Departing? <input
-        type="checkbox"
-        onChange={handleChange}
-        value={formData.departing}
-        name="departing"
-      />
-        Onboarding? <input
-        type="checkbox"
-        onChange={handleChange}
-        value={formData.onboarding}
-        name="onboarding"
-      />
-       Trained? <input
-        type="checkbox"
-        onChange={handleChange}
-        value={formData.trained}
-        name="trained"
-      />
-        Accounts? <input
-        type="checkbox"
-        onChange={handleChange}
-        value={formData.accounts}
-        name="accounts"
-      />
-        Equipment? <input
-        type="checkbox"
-        onChange={handleChange}
-        value={formData.equipment}
-        name="equipment"
-      />
-        Remote? <input
-        type="checkbox"
-        onChange={handleChange}
-        value={formData.remote}
-        name="remote"
-      />
-        <input
+Is this employee set to depart? <select name="departing" value={formData.departing} onChange={handleChange} required>
+        <option value="">Choose</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+Is this employee currently onboarding? <select name="onboarding" value={formData.onboarding} onChange={handleChange} required>
+        <option value="">Choose</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+Has this employee completed training? <select name="trained" value={formData.trained} onChange={handleChange} required>
+        <option value="">Choose</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+Does employee have access to client environments? <select name="access" value={formData.access} onChange={handleChange} required>
+        <option value="">Choose</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+Does this employee have firm-provided equipment? <select name="equipment" value={formData.equipment} onChange={handleChange} required>
+        <option value="">Choose</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+Is this a remote employee, or are they based in a company office? 
+<select name="remote" value={formData.remote} onChange={handleChange} required>
+        <option value="">Choose</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+      Hire Date <input
         type="date"
         onChange={handleChange}
         value={formData.hire_date}
         name="hire_date"
         placeholder="hire date"
+        required
       />
-            <input
+      <div hidden={pivot}>Termination Date</div><input
         type="date"
         onChange={handleChange}
         value={formData.term_date}
         name="term_date"
         placeholder="departure date"
+        hidden={pivot}
       />
-    <input
+    Image Link<input
         type="text"
         onChange={handleChange}
         value={formData.img}
         name="img"
+        placeholder="image link"
       />
-      <input
+    Notes<textarea
         type="text"
         onChange={handleChange}
         value={formData.notes}
         name="notes"
-      />
-    <input
-        type="text"
-        onChange={handleChange}
-        value={formData.user_id}
-        name="user_id"
+        placeholder="notes"
       />
       <input type="submit" value={buttonLabel} />
+
+
     </form>
   );
 };

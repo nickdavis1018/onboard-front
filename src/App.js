@@ -3,6 +3,7 @@ import SingleEmployee from "./pages/SingleEmployee";
 import Form from "./pages/Form";
 import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
+import Header from "./components/Header";
 import { useState, useEffect } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 
@@ -19,6 +20,12 @@ function App(props) {
     margin: "auto"
   }
 
+  const logout = ()=>{
+    window.localStorage.removeItem("token")
+    window.localStorage.removeItem("username")
+    setUser({token: null, username: null})
+  }
+
   const url = "http://localhost:3000/employees/";
 
   const [employees, setEmployees] = useState([]);
@@ -26,17 +33,32 @@ function App(props) {
   const [user, setUser] = useState({token: null, username: null})
 
   useEffect(() => {
-    const token = JSON.parse(window.localStorage.getItem("token"))
-    const username = JSON.parse(window.localStorage.getItem("username"))
-    console.log(token)
+    const token = window.localStorage.getItem("token")
+    const username = window.localStorage.getItem("username")
     if (token){
       setUser({token: token, username: username})
     }
+    else{
+      props.history.push("/signin")
+    }
   }, [])
-  
+
   const nullEmployee = {
-    subject: "",
-    details: "",
+    name: "",
+    title: "",
+    office: "",
+    team: "",
+    departing: "",
+    onboarding: "",
+    trained: "",
+    access: "",
+    equipment: "",
+    remote: "",
+    notes: "",
+    hire_date: "",
+    term_date: "",
+    img: "",
+    manager: ""
   }
   
   const [targetEmployee, setTargetEmployee] = useState(nullEmployee)
@@ -47,12 +69,20 @@ function App(props) {
     setEmployees(data)
   }
 
-
   const addEmployees = async (newEmployee) => {
+    newEmployee.manager = user.username
+    newEmployee.hire_date = new Date(newEmployee.hire_date)
+    if(newEmployee.term_date == null){
+      newEmployee.term_date = ""
+    }
+    else{
+      newEmployee.term_date = new Date(newEmployee.term_date)
+    }
     const response = await fetch(url, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
+        'Authorization': `Bearer ${user.token}`
       },
       body: JSON.stringify(newEmployee),
     })
@@ -65,6 +95,8 @@ function App(props) {
   }
 
   const updateEmployee = async (employee) => {
+    employee.hire_date = new Date(employee.hire_date)
+    employee.term_date = new Date(employee.term_date)
     const response = await fetch(url + employee.id + "/", {
       method: "put",
       headers: {
@@ -91,25 +123,27 @@ function App(props) {
     getEmployees()
   }, [])
 
-
   return (
     <div className="App">
-      <h1 style={h1}>My Employee List</h1>
-      <Link to="/new"><button style={button}>Create New Employee</button></Link>
+<Header user={user} logout={logout}/>
+<main>
       <Switch>
-            <Route exact path="/"/>
-            <Route path="/signin" render={(rp => <SignIn {...rp} />)} />
-            <Route path="/signup" render={(rp => <SignUp {...rp} />)} />
-          </Switch>
+      <Route exact path="/"/>
+      </Switch>
+  </main>
+<h1 style={h1}>My Employee List</h1>
+      <Link to="/new"><button style={button}>Create New Employee</button></Link>
       <Switch>
           {/* INDEX PAGE */}
           <Route
             exact
             path="/"
             render={(rp) => {
-              return <AllEmployees {...rp} employees={employees} />;
+              return <AllEmployees {...rp} employees={employees} user={user.username}/>;
             }}
           />
+        <Route path="/signup" render={(rp => <SignUp {...rp} />)} />
+      <Route path="/signin" render={(rp => <SignIn {...rp} />)} />
           {/* SHOW PAGE */}
           <Route
             path="/employee/:id"
@@ -118,8 +152,10 @@ function App(props) {
               {...rp} 
               employees={employees} 
               edit={getTargetEmployee}
+              update={updateEmployee}
               deleteEmployee={deleteEmployee}
-              user={user}
+              logout={logout}
+              user={user.username}
             />;
             }}
           />
@@ -130,7 +166,8 @@ function App(props) {
               return <Form {...rp} 
               initialEmployee={nullEmployee}
               handleSubmit={addEmployees}
-              buttonLabel="Add to my list"
+              buttonLabel="Create New Employee"
+              user={user.username}
             />;
             }}
           />
@@ -141,7 +178,8 @@ function App(props) {
               {...rp} 
               initialEmployee={targetEmployee}
               handleSubmit={updateEmployee}
-              buttonLabel="Edit"
+              buttonLabel="Save Edits"
+              user={user.username}
             />;
           }}
         />

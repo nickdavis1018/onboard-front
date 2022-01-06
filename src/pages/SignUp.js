@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const Signup = (props) => {
+const SignUp = (props) => {
 
     const blank = {
         username: "",
@@ -17,7 +17,7 @@ const Signup = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         const { username, password} = form
-        fetch(`http://localhost:3000/signup`, {
+        fetch(`http://localhost:3000/register`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -28,7 +28,7 @@ const Signup = (props) => {
             .then(data => {
                 console.log(data)
                 setForm(blank)
-                props.history.push("/login")
+                props.history.push("/signin")
             })
 
     }
@@ -44,8 +44,8 @@ const Signup = (props) => {
                         <input className="loginButton" type="submit" value="Sign Up" /></div>
                 </form>
             </div>
-            <p>Already have an account? <Link to="/login" className={"loginredirect"}>Login</Link></p>
+            <p>Already have an account? <Link to="/signin" className={"loginredirect"}>Login</Link></p>
         </div>
     )
 }
-export default Signup
+export default SignUp

@@ -51,8 +51,6 @@ return (
                     <input className="loginButton" type="submit" value="Login" /></div>
             </form>                     
         </div>
-        {error&&<p id="errorMsg">{error}</p>}
-                <div className="login"></div>
         <p>Don't have an account? <Link to="/signup" className={"loginredirect"} >Sign Up</Link></p>
     </div>
 )
