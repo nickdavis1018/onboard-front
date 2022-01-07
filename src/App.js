@@ -1,24 +1,16 @@
 import AllEmployees from "./pages/AllEmployees";
 import SingleEmployee from "./pages/SingleEmployee";
+import MyAssignments from "./pages/MyAssignments";
+import MyTeam from "./pages/MyTeam";
 import Form from "./pages/Form";
 import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
 import Header from "./components/Header";
 import { useState, useEffect } from "react";
 import { Route, Switch, Link } from "react-router-dom";
+import "./App.css";
 
 function App(props) {
-
-  const h1 = {
-    textAlign: "center",
-    margin: "10px",
-  };
-
-  const button = {
-    backgroundColor: "navy",
-    display: "block",
-    margin: "auto"
-  }
 
   const logout = ()=>{
     window.localStorage.removeItem("token")
@@ -26,22 +18,24 @@ function App(props) {
     setUser({token: null, username: null})
   }
 
-  const url = "http://localhost:3000/employees/";
-
-  const [employees, setEmployees] = useState([]);
-
-  const [user, setUser] = useState({token: null, username: null})
+  const [user, setUser] = useState({token: null, username: null, team: null, role: null})
 
   useEffect(() => {
     const token = window.localStorage.getItem("token")
     const username = window.localStorage.getItem("username")
+    const team = window.localStorage.getItem("team")
+    const role = window.localStorage.getItem("role")
     if (token){
-      setUser({token: token, username: username})
+      setUser({token: token, username: username, team: team, role: role})
     }
     else{
       props.history.push("/signin")
     }
   }, [])
+
+  const url = "http://localhost:3000/employees/";
+
+  const [employees, setEmployees] = useState([]);
 
   const nullEmployee = {
     name: "",
@@ -58,9 +52,10 @@ function App(props) {
     hire_date: "",
     term_date: "",
     img: "",
+    assignee: "",
     manager: ""
   }
-  
+
   const [targetEmployee, setTargetEmployee] = useState(nullEmployee)
 
   const getEmployees = async () => {
@@ -70,19 +65,11 @@ function App(props) {
   }
 
   const addEmployees = async (newEmployee) => {
-    newEmployee.manager = user.username
-    newEmployee.hire_date = new Date(newEmployee.hire_date)
-    if(newEmployee.term_date == null){
-      newEmployee.term_date = ""
-    }
-    else{
-      newEmployee.term_date = new Date(newEmployee.term_date)
-    }
     const response = await fetch(url, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        'Authorization': `Bearer ${user.token}`
+        "Authorization": `Bearer ${user.token}`
       },
       body: JSON.stringify(newEmployee),
     })
@@ -95,13 +82,11 @@ function App(props) {
   }
 
   const updateEmployee = async (employee) => {
-    employee.hire_date = new Date(employee.hire_date)
-    employee.term_date = new Date(employee.term_date)
     const response = await fetch(url + employee.id + "/", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
-        'Authorization': `Bearer ${user.token}`
+        "Authorization": `Bearer ${user.token}`
       },
       body: JSON.stringify(employee),
     });
@@ -113,7 +98,7 @@ function App(props) {
     const response = await fetch(url + employee.id + "/", {
       method: "delete",
       headers: 
-      { 'Authorization': `Bearer ${user.token}` }
+      { "Authorization": `Bearer ${user.token}` }
     });
     getEmployees();
     props.history.push("/");
@@ -126,13 +111,6 @@ function App(props) {
   return (
     <div className="App">
 <Header user={user} logout={logout}/>
-<main>
-      <Switch>
-      <Route exact path="/"/>
-      </Switch>
-  </main>
-<h1 style={h1}>My Employee List</h1>
-      <Link to="/new"><button style={button}>Create New Employee</button></Link>
       <Switch>
           {/* INDEX PAGE */}
           <Route
@@ -144,6 +122,34 @@ function App(props) {
           />
         <Route path="/signup" render={(rp => <SignUp {...rp} />)} />
       <Route path="/signin" render={(rp => <SignIn {...rp} />)} />
+      <Route
+            path="/myassignments"
+            render={(rp) => {
+              return <MyAssignments
+              {...rp} 
+              employees={employees} 
+              edit={getTargetEmployee}
+              update={updateEmployee}
+              deleteEmployee={deleteEmployee}
+              logout={logout}
+              user={user}
+            />;
+            }}
+          />
+          <Route
+            path="/myteam"
+            render={(rp) => {
+              return <MyTeam
+              {...rp} 
+              employees={employees} 
+              edit={getTargetEmployee}
+              update={updateEmployee}
+              deleteEmployee={deleteEmployee}
+              logout={logout}
+              user={user}
+            />;
+            }}
+          />
           {/* SHOW PAGE */}
           <Route
             path="/employee/:id"
@@ -164,6 +170,7 @@ function App(props) {
             path="/new"
             render={(rp) => {
               return <Form {...rp} 
+              employees={employees} 
               initialEmployee={nullEmployee}
               handleSubmit={addEmployees}
               buttonLabel="Create New Employee"
@@ -176,6 +183,7 @@ function App(props) {
             render={(rp) => {
               return <Form 
               {...rp} 
+              employees={employees} 
               initialEmployee={targetEmployee}
               handleSubmit={updateEmployee}
               buttonLabel="Save Edits"

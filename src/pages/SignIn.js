@@ -5,7 +5,7 @@ const SignIn = (props) => {
 
     const blank = {
         username: "",
-        password: ""
+        password: "",
     }
     const [form, setForm] = React.useState(blank)
 
@@ -15,8 +15,8 @@ const SignIn = (props) => {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
 
-    const handleSubmit = (thing) => {
-        thing.preventDefault()
+    const handleSubmit = (event) => {
+        event.preventDefault()
         const { username, password } = form
         fetch(`http://localhost:3000/login`, {
             method: "post",
@@ -30,12 +30,14 @@ const SignIn = (props) => {
                 return result
             })
             .then(data => {
+                console.log(data)
                 window.localStorage.setItem("token", JSON.stringify(data.token))
                 window.localStorage.setItem("username", JSON.stringify(data.user.username))
-                console.log(window.localStorage.getItem("token"))
-                console.log(window.localStorage.getItem("username"))
+                window.localStorage.setItem("team", JSON.stringify(data.user.team))
+                window.localStorage.setItem("role", JSON.stringify(data.user.role))
                 setForm(blank)
                 props.history.push("/")
+                window.location.href = "/"
             })
     }
 
