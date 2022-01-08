@@ -12,7 +12,7 @@ import "./App.css";
 
 function App(props) {
 
-  const [user, setUser] = useState({token: null, username: "", team: "", role: ""})
+  const [user, setUser] = useState({token: null, username: "null", team: "null", role: "null"})
 
   useEffect(() => {
     const token = window.localStorage.getItem("token")

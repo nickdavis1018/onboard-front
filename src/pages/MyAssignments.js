@@ -45,7 +45,7 @@ const showStandard = () => {
       return foundEmployee
     }
   }).filter(foundEmployee => {
-    if (foundEmployee.assignee === props.user.username) {
+    if (foundEmployee.assignee === props.user.username.replace(/['"]+/g, '')) {
       return foundEmployee;
     }
     else {
@@ -72,7 +72,7 @@ const loadedOn = () => {
       return foundEmployee
     }
   }).filter(foundEmployee => {
-    if (foundEmployee.assignee === props.user.username) {
+    if (foundEmployee.assignee === props.user.username.replace(/['"]+/g, '')) {
       return foundEmployee;
     }
     else {
@@ -104,7 +104,7 @@ const loadedStandard = () => {
       return foundEmployee
     }
   }).filter(foundEmployee => {
-    if (foundEmployee.assignee === props.user.username) {
+    if (foundEmployee.assignee === props.user.username.replace(/['"]+/g, '')) {
       return foundEmployee;
     }
     else {
@@ -136,7 +136,7 @@ return props.employees.filter(foundEmployee => {
     return foundEmployee
   }
 }).filter(foundEmployee => {
-  if (foundEmployee.assignee === props.user.username) {
+  if (foundEmployee.assignee === props.user.username.replace(/['"]+/g, '')) {
     return foundEmployee;
   }
   else {
@@ -160,11 +160,13 @@ return 0;
 }
 ).map((employee) => <Employee employee={employee} key={employee.id} />)}
 
+
+
 return (
   <section>
     <div className="main">
     <input className="searchBar" placeholder="Browse..." onChange={event => setSearch(event.target.value)} />
-    {props.user.role === "manager" ? <div className="managerEmpButton"><div><h4 style={admin}>Admin Actions</h4></div><div><Link to="/new"><button style={button}>Create Employee</button></Link></div></div>: ""}
+    {props.user.role.replace(/['"]+/g, '') === "manager" ? <div className="managerEmpButton"><div><h4 style={admin}>Admin Actions</h4></div><div><Link to="/new"><button style={button}>Create Employee</button></Link></div></div>: ""}
       <div className="buttonBox">
       <button style={button2} onClick={(event) => showStandard()}>Onboarded</button>
       <button style={button2} onClick={(event) => showOnboards()}>Onboarding</button>

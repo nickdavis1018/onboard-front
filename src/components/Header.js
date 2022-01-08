@@ -5,7 +5,7 @@ import "../App.css";
 function Header({ user, logout }){
 
 const logInCheck = () => {
-return <><div className="headerHi"><p className="white">Logged in as: {user.username}</p><p className="white">Role: {user.role} </p><p className="white">Team: {user.team}</p></div><div className="header2">
+return <><div className="headerHi"><p className="white">Logged in as: {user.username.toUpperCase().replace(/['"]+/g, '')}, {user.role.toUpperCase().replace(/['"]+/g, '')} / {user.team.toUpperCase().replace(/['"]+/g, '')}</p></div><div className="header2">
 <Link className="whiteLink" to="/">All Employees</Link>
 <Link className="whiteLink" to="/myteam">My Team</Link>
 <Link className="whiteLink" to="/myassignments">My Assignments</Link>

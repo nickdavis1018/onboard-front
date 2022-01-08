@@ -33,17 +33,14 @@ const SignIn = (props) => {
                 return result
             })
             .then(data => {
-                window.localStorage.removeItem("token")
-                window.localStorage.removeItem("username")
-                window.localStorage.removeItem("team")
-                window.localStorage.removeItem("role")
+                console.log(data)
                 window.localStorage.setItem("token", JSON.stringify(data.token))
                 window.localStorage.setItem("username", JSON.stringify(data.user.username))
                 window.localStorage.setItem("team", JSON.stringify(data.user.team))
                 window.localStorage.setItem("role", JSON.stringify(data.user.role))
                 setForm(blank)
-                props.history.push("/")
                 window.location.href = "/"
+                props.history.push("/")
             })
     }
 
@@ -53,8 +50,8 @@ return (
         <p>Login with your account below.</p>
         <div className="authBox">
             <form className="loginBox" onSubmit={handleSubmit}>
-                <input id="inputSignup" placeholder="Username" type="text" name="username" value={form.username} onChange={handleChange} />
-                <input id="inputSignup" placeholder="Password" type="password" name="password" value={form.password} onChange={handleChange} />
+                <input id="inputSig" placeholder="Username" type="text" name="username" value={form.username} onChange={handleChange} />
+                <input id="inputSig2" placeholder="Password" type="password" name="password" value={form.password} onChange={handleChange} />
                 <div className="inputButton">
                     <input style={button} className="loginButton" type="submit" value="Login" /></div>
             </form>                     

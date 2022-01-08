@@ -38,6 +38,8 @@ const showAll = () => {
   setToggle({ ...toggle, set: "all"});
 }
 
+const loggedInUser = props.user
+
 const loadedAll = () => {
 return props.employees.filter(foundEmployee => {
   if (search === "") {
@@ -134,11 +136,15 @@ return 0;
 }
 ).map((employee) => <Employee employee={employee} key={employee.id} />)}
 
+let myRole = props.user.role
+let myTeam = props.user.team
+let myName = props.user.username
+
 return (
   <section>
     <div className="main">
     <input className="searchBar" placeholder="Browse..." onChange={event => setSearch(event.target.value)} />
-    {props.user.role === "manager" ? <div className="managerEmpButton"><div><h4 style={admin}>Admin Actions</h4></div><div><Link to="/new"><button style={button}>Create Employee</button></Link></div></div>: ""}
+    {myRole.replace(/['"]+/g, '') === "manager" ? <div className="managerEmpButton"><div><h4 style={admin}>Admin Actions</h4></div><div><Link to="/new"><button style={button}>Create Employee</button></Link></div></div>: ""}
       <div className="buttonBox">
       <button style={button2} onClick={(event) => showStandard()}>Onboarded</button>
       <button style={button2} onClick={(event) => showOnboards()}>Onboarding</button>
@@ -153,5 +159,3 @@ return (
 }
 
 export default AllEmployees;
-
-{/* <div className="manager"><div className="manager2"></div></div></div> */}

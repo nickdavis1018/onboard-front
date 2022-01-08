@@ -29,9 +29,6 @@ const SignUp = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         const { username, password, team, role} = form
-        form.username = username.replace(/['"]+/g, '')
-        form.team = team.replace(/['"]+/g, '')
-        form.role = role.replace(/['"]+/g, '')
         fetch(`https://onboard-backend-dev.herokuapp.com/register/`, {
             method: "post",
             headers: {
@@ -53,7 +50,7 @@ const SignUp = (props) => {
             <p>Sign up for free today.</p>
             <div className="authBox">
                 <form className="loginBox" onSubmit={handleSubmit}>
-                    <input id="inputSignup" placeholder="enter username" type="text" name="username" value={form.username} onChange={handleChange} />
+                    <input id="inputSign" placeholder="enter username" type="text" name="username" value={form.username} onChange={handleChange} />
                     <input id="inputSignup" placeholder="enter password" type="password" name="password" value={form.password} onChange={handleChange} />
                     <select name="team" placeholder="Team" onChange={handleChange} value={form.team} required>
         <option value="">Select Team</option>
