@@ -26,7 +26,7 @@ function App(props) {
     const team = window.localStorage.getItem("team")
     const role = window.localStorage.getItem("role")
     if (token){
-      setUser({token: token.replace(/['"]+/g, ''), username: username.replace(/['"]+/g, ''), team: team.replace(/['"]+/g, ''), role: role.replace(/['"]+/g, '')})
+      setUser({token: token, username: username, team: team, role: role})
     }
     else{
       props.history.push("/signin")
