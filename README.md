@@ -14,7 +14,7 @@ Want to check out the site? Check out <a href="https://events-n-stuff.netlify.ap
 
 Create an application that allows logged-in users to work with employee accounts - updating status as far as training, access, employment, etc. Users can choose between multiple roles - manager or lead currently - and each role allows for different access levels. Managers can create create, update, and assign employees out to Leads, while Leads will access Assignee Lists to view available assignees, updating status when necessary. 
 
-In a basic sense, simplify training and onboarding of new hires.
+In a basic sense, simplify training and onboarding for new hires.
 
 ## Technologies Used 
 
@@ -35,6 +35,40 @@ In a basic sense, simplify training and onboarding of new hires.
 - Multiple Models
 - Responsive Design
 - Incorporate Modal
+
+## Original ERD
+
+<img src="https://imgur.com/xdjgFgo.png"/>
+
+## Stretch Goals
+
+- Track assignee statistics
+- Increase backend security
+
+## Site Info
+
+The On/board site can be logged into from the home page (required):
+
+<img src="https://imgur.com/gqVZrRO.png"/>
+
+Users can utilize the Search bar to browse events and filter the employees by status:
+
+<img src="https://imgur.com/DgxKIbU.png"/>
+
+Users can select individal employees to take unique actions on their account:
+
+<img src="https://imgur.com/lNKVkvq.png"/>
+
+## Code Snippets
+
+App.js
+<img src="https://imgur.com/DbCDPHx.png"/>
+
+AllEmployees.js
+<img src="https://imgur.com/FHviOsV.png"/>
+
+SingleEmployee.js
+<img src="https://imgur.com/qS40sNi.png"/>
 
 Nick Davis<br>
 Development Lead<br>

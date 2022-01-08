@@ -29,11 +29,12 @@ function App(props) {
       setUser({token: token.replace(/['"]+/g, ''), username: username.replace(/['"]+/g, ''), team: team.replace(/['"]+/g, ''), role: role.replace(/['"]+/g, '')})
     }
     else{
+      setUser({token: token, username: username, team: team, role: role})
       props.history.push("/signin")
     }
   }, [])
 
-  const url = "https://onboard-backend-dev.herokuapp.com/employees/";
+  const url = "http://localhost:3000/employees/";
 
   const [employees, setEmployees] = useState([]);
 
