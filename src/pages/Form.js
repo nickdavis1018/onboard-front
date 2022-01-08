@@ -12,7 +12,6 @@ const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, employees, 
   const [formData, setFormData] = useState(initialEmployee);
 
   const handleChange = (event) => {
-    console.log(formData.onboarding)
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
@@ -31,7 +30,6 @@ const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, employees, 
   const handleSubmisson = (event) => {
     event.preventDefault();
     formData.img = formData.img + ".png"
-    console.log(formData.img)
     handleSubmit(formData);
     history.push("/");
   };

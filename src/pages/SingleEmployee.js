@@ -6,7 +6,6 @@ import Modal from "../components/Modal"
 const SingleEmployee = ({ employees, match, edit, deleteEmployee, update, user, team, role}) => {
   const id = parseInt(match.params.id);
   const employee = employees.find((employee) => employee.id === id);
-  console.log(employee.team)
   const [visible, setVisible] = useState(false)
 
 

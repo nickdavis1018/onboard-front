@@ -20,7 +20,6 @@ const SignIn = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         const { username, password } = form
-        console.log(username)
         fetch(`https://onboard-backend-dev.herokuapp.com/login/`, {
             method: "post",
             headers: {
@@ -33,14 +32,13 @@ const SignIn = (props) => {
                 return result
             })
             .then(data => {
-                console.log(data)
+                if(data){}
                 window.localStorage.setItem("token", JSON.stringify(data.token))
                 window.localStorage.setItem("username", JSON.stringify(data.user.username))
                 window.localStorage.setItem("team", JSON.stringify(data.user.team))
                 window.localStorage.setItem("role", JSON.stringify(data.user.role))
                 setForm(blank)
                 window.location.href = "/"
-                props.history.push("/")
             })
     }
 
