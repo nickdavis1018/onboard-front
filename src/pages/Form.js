@@ -136,7 +136,7 @@ Does this employee have firm-provided equipment? <select name="equipment" value=
         <option value="true">Yes</option>
         <option value="false">No</option>
       </select>
-Is this a remote employee, or are they based in a company office? 
+Is this a remote employee? 
 <select name="remote" value={formData.remote} onChange={handleChange} required>
         <option value="">Choose</option>
         <option value="true">Yes</option>
