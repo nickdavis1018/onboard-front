@@ -32,7 +32,6 @@ const SignIn = (props) => {
                 return result
             })
             .then(data => {
-                if(data){}
                 window.localStorage.setItem("token", JSON.stringify(data.token))
                 window.localStorage.setItem("username", JSON.stringify(data.user.username))
                 window.localStorage.setItem("team", JSON.stringify(data.user.team))

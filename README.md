@@ -6,9 +6,9 @@ Looking for Backend? Check out the <a href="https://github.com/nickdavis1018/onb
 
 Looking for Trello? Check out the <a href="https://trello.com/b/88Qu1vK1/on-board">On/board Trello</a>.
 
-Looking for Heroku? Check out the <a href="https://onboard-backend-dev.herokuapp.com/">Events Database</a>.
+Looking for Heroku? Check out the <a href="https://onboard-backend-dev.herokuapp.com/">On/board Database</a>.
 
-Want to check out the site? Check out <a href="https://events-n-stuff.netlify.app/">Events n' Stuff</a>!
+Want to check out the site? Check out <a href="https://onboard-ga.netlify.app/">On/board</a>!
 
 ## Mission
 
@@ -40,6 +40,15 @@ In a basic sense, simplify training and onboarding for new hires.
 
 <img src="https://imgur.com/xdjgFgo.png"/>
 
+## Wireframes
+
+Index
+<img src="https://imgur.com/d0sSgoL.png"/>
+
+Show
+<img src="https://imgur.com/uS9zOMV.png"/>
+
+
 ## Stretch Goals
 
 - Track assignee statistics
@@ -61,14 +70,14 @@ Users can select individal employees to take unique actions on their account:
 
 ## Code Snippets
 
-App.js
+App.js<br/>
 <img src="https://imgur.com/DbCDPHx.png"/>
 
-AllEmployees.js
-## MVP / Achieved Targets
+AllEmployees.js<br/>
+<img src="https://imgur.com/DbCDPHx.png"/>
 
 SingleEmployee.js
-<img src="https://imgur.com/qS40sNi.png"/>
+<img src="https://imgur.com/1G01Lhp.png"/>
 
 Nick Davis<br>
 Development Lead<br>
