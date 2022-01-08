@@ -24,6 +24,7 @@ const SignUp = (props) => {
         event.preventDefault()
         const { username, password, team, role} = form
         form.username = username
+        form.password = password
         form.team = team
         form.role = role
         fetch(`https://onboard-backend-dev.herokuapp.com/register`, {
