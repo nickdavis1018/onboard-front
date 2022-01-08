@@ -12,6 +12,110 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
+.header{
+  background-color: hsl(206, 84%, 20%);
+}
+
+.back{
+  background-color: navy;
+}
+
+.header2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.inputButton{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.manager{
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ border-bottom: black solid 1px;
+}
+
+.manager3{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+ }
+
+.buttonBox{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+ }
+
+.manager2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ }
+
+ .flexCard{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+ }
+
+.managerEmpButton{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom: 1px solid black;
+}
+
+.whiteLink{
+  color: white;
+  text-decoration: underline;
+}
+
+.titlePage{
+  color: white;
+  font-weight: bolder;
+}
+
+@media only screen and (max-width: 800px) {
+  .buttonBox{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+   }
+   .divInfo{
+     display: grid;
+     grid-template-columns: repeat(1, 1fr);
+   }
+   .manager{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: black solid 1px;
+   }
+   .manager2{
+    display: flex;
+    flex-direction: column;
+   }
+}
+
+@media only screen and (max-width: 400px) {
+  .buttonBox{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+   }
+   .managerEmpButton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .header2{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+   }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

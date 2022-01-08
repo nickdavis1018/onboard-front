@@ -26,7 +26,7 @@ function App(props) {
     const team = window.localStorage.getItem("team")
     const role = window.localStorage.getItem("role")
     if (token){
-      setUser({token: token, username: username, team: team, role: role})
+      setUser({token: token.replace(/['"]+/g, ''), username: username.replace(/['"]+/g, ''), team: team.replace(/['"]+/g, ''), role: role.replace(/['"]+/g, '')})
     }
     else{
       props.history.push("/signin")
@@ -65,6 +65,7 @@ function App(props) {
   }
 
   const addEmployees = async (newEmployee) => {
+    newEmployee.manager = user.username
     const response = await fetch(url, {
       method: "post",
       headers: {
@@ -117,7 +118,7 @@ function App(props) {
             exact
             path="/"
             render={(rp) => {
-              return <AllEmployees {...rp} employees={employees} user={user.username}/>;
+              return <AllEmployees {...rp} employees={employees} user={user}/>;
             }}
           />
         <Route path="/signup" render={(rp => <SignUp {...rp} />)} />
@@ -162,6 +163,8 @@ function App(props) {
               deleteEmployee={deleteEmployee}
               logout={logout}
               user={user.username}
+              role={user.role}
+              team={user.team}
             />;
             }}
           />

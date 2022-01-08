@@ -1,12 +1,25 @@
 // Import useState hook
 import React, { useState } from "react";
-const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, user }) => {
+const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, employees, user }) => {
   
   const [formData, setFormData] = useState(initialEmployee);
 
   const handleChange = (event) => {
+    console.log(formData.onboarding)
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
+
+  function removeDuplicates(value, index, self){
+    return self.indexOf(value) === index
+  }
+  
+  let assigneeList = []
+  
+  for(let i=0; i < employees.length; i++){
+    if(employees[i].assignee !== null){
+    assigneeList.push(employees[i].assignee)}}
+
+  let assigneeList2 = assigneeList.filter(removeDuplicates)
 
   const handleSubmisson = (event) => {
     event.preventDefault();
@@ -16,13 +29,22 @@ const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, user }) => 
   };
 
   let pivot
+  let assignPivot
+  let departPivot
 
   if(formData.departing === "true"){
     pivot = false
   }
   else{
+    formData.term_date = ""
     pivot = true
   }
+
+  if(buttonLabel === "Create New Employee"){
+    assignPivot = true
+  }
+  else{
+    assignPivot = false}
 
   return (
     <form onSubmit={handleSubmisson}>
@@ -34,7 +56,10 @@ const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, user }) => 
         placeholder="full name"
         required
       />
-            Hire Date <input
+      <div hidden={assignPivot}>Assign Active Lead</div><select hidden={assignPivot} name="assignee" placeholder="assignee" onChange={handleChange} value={formData.assignee} required>
+{assigneeList2.map((assignee) => <option value={assignee} >{assignee}</option>)}
+      </select>
+        Hire Date <input
         type="date"
         onChange={handleChange}
         value={formData.hire_date}
@@ -75,10 +100,10 @@ const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, user }) => 
         name="img"
         placeholder="image link"
       />
-Is this employee currently onboarding? <select name="onboarding" value={formData.onboarding} onChange={handleChange} required>
+Status<select name="onboarding" value={formData.onboarding} onChange={handleChange} required>
         <option value="">Choose</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
+        <option value="true">Onboarding</option>
+        <option value="false">Standard</option>
       </select>
 Has this employee completed training? <select name="trained" value={formData.trained} onChange={handleChange} required>
         <option value="">Choose</option>
@@ -101,7 +126,7 @@ Is this a remote employee, or are they based in a company office?
         <option value="true">Yes</option>
         <option value="false">No</option>
       </select>
-      Is this employee set to depart? <select name="departing" value={formData.departing} onChange={handleChange} required>
+    <div hidden={departPivot}>Is this employee set to depart? <select name="departing" value={formData.departing} onChange={handleChange} required>
         <option value="">Choose</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
@@ -113,7 +138,7 @@ Is this a remote employee, or are they based in a company office?
         name="term_date"
         placeholder="departure date"
         hidden={pivot}
-      />
+      /></div>
     Notes<textarea
         type="text"
         onChange={handleChange}
@@ -121,23 +146,14 @@ Is this a remote employee, or are they based in a company office?
         name="notes"
         placeholder="notes"
       />
-      <input type="submit" value={buttonLabel} />
-      <input
-        type="text"
-        onChange={handleChange}
-        value={formData.assignee}
-        name="assignee"
-        placeholder="assignee"
-        hidden
-      />
       <input
         type="text"
         onChange={handleChange}
         value={formData.manager}
         name="manager"
         placeholder="manager"
-        hidden
       />
+      <input type="submit" value={buttonLabel} /><br/>
     </form>
   );
 };

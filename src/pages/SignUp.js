@@ -2,6 +2,10 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 const SignUp = (props) => {
+    const button = {
+        backgroundColor: "navy",
+        display: "block",
+      }
 
     const blank = {
         username: "",
@@ -19,6 +23,9 @@ const SignUp = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         const { username, password, team, role} = form
+        form.username = username.replace(/['"]+/g, '')
+        form.team = team.replace(/['"]+/g, '')
+        form.role = role.replace(/['"]+/g, '')
         fetch(`http://localhost:3000/register`, {
             method: "post",
             headers: {
@@ -58,7 +65,7 @@ const SignUp = (props) => {
         <option value="lead">Lead</option>
       </select>
                     <div className="inputButton">
-                        <input className="loginButton" type="submit" value="Sign Up" /></div>
+                        <input style={button} className="loginButton" type="submit" value="Sign Up" /></div>
                 </form>
             </div>
             <p>Already have an account? <Link to="/signin" className={"loginredirect"}>Login</Link></p>

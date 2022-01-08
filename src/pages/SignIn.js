@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 
 const SignIn = (props) => {
 
+    const button = {
+        backgroundColor: "navy",
+        display: "block",
+      }
     const blank = {
         username: "",
         password: "",
@@ -43,14 +47,14 @@ const SignIn = (props) => {
 
 return (
     <div className={"loginDiv"}>
-        <h1 className="loginWelcome">Welcome to Onboard!</h1>
+        <h1 className="loginWelcome">Welcome to On/|\board!</h1>
         <p>Login with your account below.</p>
         <div className="authBox">
             <form className="loginBox" onSubmit={handleSubmit}>
                 <input id="inputSignup" placeholder="Username" type="text" name="username" value={form.username} onChange={handleChange} />
                 <input id="inputSignup" placeholder="Password" type="password" name="password" value={form.password} onChange={handleChange} />
                 <div className="inputButton">
-                    <input className="loginButton" type="submit" value="Login" /></div>
+                    <input style={button} className="loginButton" type="submit" value="Login" /></div>
             </form>                     
         </div>
         <p>Don't have an account? <Link to="/signup" className={"loginredirect"} >Sign Up</Link></p>
