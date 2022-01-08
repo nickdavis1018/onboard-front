@@ -6,7 +6,7 @@ Looking for Backend? Check out the <a href="https://github.com/nickdavis1018/onb
 
 Looking for Trello? Check out the <a href="https://trello.com/b/88Qu1vK1/on-board">On/board Trello</a>.
 
-Looking for Heroku? Check out the <a href="https://onboard-backend-dev.herokuapp.com/employees">Events Database</a>.
+Looking for Heroku? Check out the <a href="https://onboard-backend-dev.herokuapp.com/">Events Database</a>.
 
 Want to check out the site? Check out <a href="https://events-n-stuff.netlify.app/">Events n' Stuff</a>!
 
@@ -65,7 +65,7 @@ App.js
 <img src="https://imgur.com/DbCDPHx.png"/>
 
 AllEmployees.js
-<img src="https://imgur.com/FHviOsV.png"/>
+## MVP / Achieved Targets
 
 SingleEmployee.js
 <img src="https://imgur.com/qS40sNi.png"/>
