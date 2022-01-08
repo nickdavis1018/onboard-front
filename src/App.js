@@ -33,7 +33,7 @@ function App(props) {
     }
   }, [])
 
-  const url = "http://localhost:3000/employees/";
+  const url = "https://onboard-backend-dev.herokuapp.com/employees/";
 
   const [employees, setEmployees] = useState([]);
 
