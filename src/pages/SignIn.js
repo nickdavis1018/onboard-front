@@ -13,8 +13,6 @@ const SignIn = (props) => {
     }
     const [form, setForm] = React.useState(blank)
 
-    const [error, setError] = useState(undefined)
-
   const handleChange = (event) => {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
@@ -22,7 +20,8 @@ const SignIn = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         const { username, password } = form
-        fetch(`http://localhost:3000/login`, {
+        console.log(username)
+        fetch(`https://onboard-backend-dev.herokuapp.com/login/`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -34,7 +33,10 @@ const SignIn = (props) => {
                 return result
             })
             .then(data => {
-                console.log(data)
+                window.localStorage.removeItem("token")
+                window.localStorage.removeItem("username")
+                window.localStorage.removeItem("team")
+                window.localStorage.removeItem("role")
                 window.localStorage.setItem("token", JSON.stringify(data.token))
                 window.localStorage.setItem("username", JSON.stringify(data.user.username))
                 window.localStorage.setItem("team", JSON.stringify(data.user.team))

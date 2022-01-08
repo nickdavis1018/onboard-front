@@ -2,6 +2,12 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 const SignUp = (props) => {
+
+    window.localStorage.removeItem("token")
+    window.localStorage.removeItem("username")
+    window.localStorage.removeItem("team")
+    window.localStorage.removeItem("role")
+
     const button = {
         backgroundColor: "navy",
         display: "block",
@@ -26,7 +32,7 @@ const SignUp = (props) => {
         form.username = username.replace(/['"]+/g, '')
         form.team = team.replace(/['"]+/g, '')
         form.role = role.replace(/['"]+/g, '')
-        fetch(`http://localhost:3000/register`, {
+        fetch(`https://onboard-backend-dev.herokuapp.com/register/`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"

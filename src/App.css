@@ -31,6 +31,17 @@
   justify-content: space-around;
 }
 
+.white{
+  color: white;
+  font-weight: bold;
+}
+
+.headerHi{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .inputButton{
   display: flex;
   flex-direction: row;

@@ -3,6 +3,7 @@ import { Route, Switch, Link } from "react-router-dom";
 import Employee from "../components/employee"
 
 const MyTeam = (props) => {
+  console.log(props.user.team)
     const button = {
         backgroundColor: "navy",
         display: "block",
@@ -160,6 +161,8 @@ if (aTemp > bTemp){
 return 0;
 }
 ).map((employee) => <Employee employee={employee} key={employee.id} />)}
+
+
 
 return (
   <section>

@@ -12,29 +12,22 @@ import "./App.css";
 
 function App(props) {
 
-  const logout = ()=>{
-    window.localStorage.removeItem("token")
-    window.localStorage.removeItem("username")
-    setUser({token: null, username: null})
-  }
-
-  const [user, setUser] = useState({token: null, username: null, team: null, role: null})
+  const [user, setUser] = useState({token: null, username: "", team: "", role: ""})
 
   useEffect(() => {
     const token = window.localStorage.getItem("token")
-    const username = window.localStorage.getItem("username")
-    const team = window.localStorage.getItem("team")
-    const role = window.localStorage.getItem("role")
     if (token){
-      setUser({token: token.replace(/['"]+/g, ''), username: username.replace(/['"]+/g, ''), team: team.replace(/['"]+/g, ''), role: role.replace(/['"]+/g, '')})
+      const username = window.localStorage.getItem("username")
+      const team = window.localStorage.getItem("team")
+      const role = window.localStorage.getItem("role")
+      setUser({token: token, username: username.replace(/['"]+/g, ''), team: team.replace(/['"]+/g, ''), role: role.replace(/['"]+/g, '')})
     }
     else{
-      setUser({token: token, username: username, team: team, role: role})
       props.history.push("/signin")
     }
   }, [])
 
-  const url = "http://localhost:3000/employees/";
+  const url = "https://onboard-backend-dev.herokuapp.com/employees/";
 
   const [employees, setEmployees] = useState([]);
 
@@ -55,6 +48,12 @@ function App(props) {
     img: "",
     assignee: "",
     manager: ""
+  }
+
+  const logout = ()=>{
+    window.localStorage.removeItem("token")
+    window.localStorage.removeItem("username")
+    setUser({token: null, username: null, team: null, role: null})
   }
 
   const [targetEmployee, setTargetEmployee] = useState(nullEmployee)
