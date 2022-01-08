@@ -22,7 +22,7 @@ const SignIn = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         const { username, password } = form
-        fetch(`http://localhost:3000/login`, {
+        fetch(`https://onboard-backend-dev.herokuapp.com/login`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
