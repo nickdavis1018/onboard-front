@@ -47,7 +47,7 @@ const SignIn = (props) => {
 
 return (
     <div className={"loginDiv"}>
-        <h1 className="loginWelcome">Welcome to On/|\board!</h1>
+        <h1 className="loginWelcome">Welcome to On/board!</h1>
         <p>Login with your account below.</p>
         <div className="authBox">
             <form className="loginBox" onSubmit={handleSubmit}>

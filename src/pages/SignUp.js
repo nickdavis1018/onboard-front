@@ -43,7 +43,7 @@ const SignUp = (props) => {
     }
     return (
         <div className={"loginDiv"}>
-            <h1 className="loginWelcome">Welcome to Onboard!</h1>
+            <h1 className="loginWelcome">Welcome to On/board!</h1>
             <p>Sign up for free today.</p>
             <div className="authBox">
                 <form className="loginBox" onSubmit={handleSubmit}>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Employee from "../components/employee"
-import { Route, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AllEmployees = (props) => {
   const button = {

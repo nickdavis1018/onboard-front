@@ -1,7 +1,14 @@
 // Import useState hook
 import React, { useState } from "react";
 const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, employees, user }) => {
-  
+  const button = {
+    backgroundColor: "navy",
+    textAlign: "center",
+    border: "black",
+    marginTop: "5px",
+    marginRight: "10px",
+    marginBottom: "10px",
+  }
   const [formData, setFormData] = useState(initialEmployee);
 
   const handleChange = (event) => {
@@ -23,7 +30,8 @@ const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, employees, 
 
   const handleSubmisson = (event) => {
     event.preventDefault();
-    console.log(formData)
+    formData.img = formData.img + ".png"
+    console.log(formData.img)
     handleSubmit(formData);
     history.push("/");
   };
@@ -38,6 +46,14 @@ const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, employees, 
   else{
     formData.term_date = ""
     pivot = true
+  }
+
+  if(formData.onboarding === "false"){
+    departPivot = false
+  }
+  else{
+    formData.departing = "false"
+    departPivot = true
   }
 
   if(buttonLabel === "Create New Employee"){
@@ -56,7 +72,7 @@ const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, employees, 
         placeholder="full name"
         required
       />
-      <div hidden={assignPivot}>Assign Active Lead</div><select hidden={assignPivot} name="assignee" placeholder="assignee" onChange={handleChange} value={formData.assignee} required>
+      <div hidden={assignPivot}>Assign Active Lead</div><select hidden={assignPivot} name="assignee" placeholder="assignee" onChange={handleChange} value={formData.assignee}>
 {assigneeList2.map((assignee) => <option value={assignee} >{assignee}</option>)}
       </select>
         Hire Date <input
@@ -146,14 +162,7 @@ Is this a remote employee, or are they based in a company office?
         name="notes"
         placeholder="notes"
       />
-      <input
-        type="text"
-        onChange={handleChange}
-        value={formData.manager}
-        name="manager"
-        placeholder="manager"
-      />
-      <input type="submit" value={buttonLabel} /><br/>
+      <input type="submit" style={button} value={buttonLabel} /><br/>
     </form>
   );
 };

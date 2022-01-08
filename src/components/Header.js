@@ -19,7 +19,7 @@ return <div className="header2">
 <Link className="whiteLink" to="/signup">Register</Link></div> 
 }
 
-return <><div className="header"><h1 className="titlePage">On/|\board</h1>  
+return <><div className="header"><h1 className="titlePage">On/board</h1>  
 {user.token ? logInCheck() : loggedOut()}
 </div>
 </> 

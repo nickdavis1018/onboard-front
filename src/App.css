@@ -20,6 +20,11 @@
   background-color: navy;
 }
 
+.content{
+  border-top: solid black 1px;
+  margin-top: 8px;
+}
+
 .header2{
   display: flex;
   flex-direction: row;
@@ -37,6 +42,14 @@
  flex-direction: row;
  justify-content: space-between;
  border-bottom: black solid 1px;
+}
+
+.divInfo2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
 }
 
 .manager3{

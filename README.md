@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Welcome to On/board!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created by Nicholas Davis.
 
-## Available Scripts
+Looking for Backend? Check out the <a href="https://github.com/nickdavis1018/onboard-back">Backend Repo</a>.
 
-In the project directory, you can run:
+Looking for Trello? Check out the <a href="https://trello.com/b/88Qu1vK1/on-board">On/board Trello</a>.
 
-### `npm start`
+Looking for Heroku? Check out the <a href="https://onboard-backend-dev.herokuapp.com/employees">Events Database</a>.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Want to check out the site? Check out <a href="https://events-n-stuff.netlify.app/">Events n' Stuff</a>!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Mission
 
-### `npm test`
+Create an application that allows logged-in users to work with employee accounts - updating status as far as training, access, employment, etc. Users can choose between multiple roles - manager or lead currently - and each role allows for different access levels. Managers can create create, update, and assign employees out to Leads, while Leads will access Assignee Lists to view available assignees, updating status when necessary. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In a basic sense, simplify training and onboarding of new hires.
 
-### `npm run build`
+## Technologies Used 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- HTML / CSS
+- Javascript
+- React
+- Ruby on Rails
+- Postgresql
+- Github
+- Heroku (back-end)
+- Netlify (front-end)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## MVP / Achieved Targets
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Allow full CRUD functionality
+- Create User Authentication / Authorization
+- Create Search Functionality
+- Multiple Models
+- Responsive Design
+- Incorporate Modal
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Nick Davis<br>
+Development Lead<br>
+<a href="https://github.com/nickdavis1018">Nick's Github</a>

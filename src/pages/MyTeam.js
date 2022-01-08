@@ -173,7 +173,7 @@ return (
       <button style={button2} onClick={(event) => showAll()}>All</button></div>
     </div>
     <div className="content">
-    {toggle.set === "all" ? <><h2>All Employees</h2> {loadedAll()} </>: toggle.set === "onboards" ? <><h2>Onboarding Employees</h2> {loadedOn()} </> : toggle.set === "offboards" ? <><h2>Offboarding Employees</h2> {loadedOff()} </> : toggle.set === "standard" ? <><h2>Onboarded Employees</h2> {loadedStandard()} </> : "Error"}
+    {toggle.set === "all" ? <><h2>All Team</h2> {loadedAll()} </>: toggle.set === "onboards" ? <><h2>Onboarding Team Members</h2> {loadedOn()} </> : toggle.set === "offboards" ? <><h2>Offboarding Team Members</h2> {loadedOff()} </> : toggle.set === "standard" ? <><h2>Onboarded Team Members</h2> {loadedStandard()} </> : "Error"}
     </div>
   </section>
 );
