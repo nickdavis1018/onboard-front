@@ -29,7 +29,6 @@ const Form = ({ initialEmployee, handleSubmit, buttonLabel, history, employees, 
 
   const handleSubmisson = (event) => {
     event.preventDefault();
-    formData.img = formData.img + ".png"
     handleSubmit(formData);
     history.push("/");
   };

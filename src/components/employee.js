@@ -13,6 +13,8 @@ const Employee = ({employee}) => {
         width: "300px",
       };
 
+const imageHolder = employee.img + ".png"
+
     return <div style={div}>
         <Link to={`/employee/${employee.id}`}>
         <h1>{employee.name}</h1>
@@ -21,7 +23,7 @@ const Employee = ({employee}) => {
             <h3>{employee.team}</h3></div>
             {employee.assignee ? <><h4>Assigned: {employee.assignee}</h4></> : "Unassigned"}
             <h4>{employee.departing ? "Departing" : employee.onboarding ? "Onboarding" : "Onboarded"}</h4>
-            <img style={showImage} src={employee.img} alt={employee.name} />
+            <img style={showImage} src={imageHolder} alt={employee.name} />
         </Link>
     </div>
 }

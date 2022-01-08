@@ -165,6 +165,8 @@ const SingleEmployee = ({ employees, match, edit, deleteEmployee, update, user, 
     
 }
 
+const imageHolder = employee.img + ".png"
+
   return (
     <> <Modal visible={visible}><h1>WARNING!</h1><p style ={label}>Terminating an employee cannot be undone. Ensure that this employee's access has been revoked and equipment has been returned before proceeding.</p>
     <div><button style={buttonRed} onClick={(event) => deleteEmployee(employee)}>Terminate</button><button style={button} onClick={toggleVisibility}>Cancel</button></div></Modal>  
@@ -178,7 +180,7 @@ const SingleEmployee = ({ employees, match, edit, deleteEmployee, update, user, 
       <h1 style={employeeName}>{employee.name}</h1>
       <div>Assigned To:<h2>{employee.assignee === "" ? "Unassigned" : employee.assignee}</h2>Status<h2>{employee.departing ? "Departing" : employee.onboarding ? "Onboarding" : "Onboarded"}</h2></div>
       {employee.departing ? <> Departure Date<h2>{reverseDate(employee.term_date)}</h2></>: ""}
-      <img style={showImage} src={employee.img} alt={employee.name} /><br />
+      <img style={showImage} src={imageHolder} alt={employee.name} /><br />
       <div className="employeeDetail">
       <div style={div3}><p style={label}>Accounts</p>
       <div className="divInfo"><h2>{employee.access ? "Accounts Active" : "Accounts Disabled"}</h2>
