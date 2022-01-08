@@ -42,10 +42,10 @@ In a basic sense, simplify training and onboarding for new hires.
 
 ## Wireframes
 
-Index
+Index<br/>
 <img src="https://imgur.com/d0sSgoL.png"/>
 
-Show
+Show<br/>
 <img src="https://imgur.com/uS9zOMV.png"/>
 
 
