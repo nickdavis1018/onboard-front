@@ -23,9 +23,9 @@ const SignUp = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         const { username, password, team, role} = form
-        form.username = username
-        form.team = team
-        form.role = role
+        form.username = username.replace(/['"]+/g, '')
+        form.team = team.replace(/['"]+/g, '')
+        form.role = role.replace(/['"]+/g, '')
         fetch(`https://onboard-backend-dev.herokuapp.com/register`, {
             method: "post",
             headers: {
