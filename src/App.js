@@ -20,7 +20,7 @@ function App(props) {
       const username = window.localStorage.getItem("username")
       const team = window.localStorage.getItem("team")
       const role = window.localStorage.getItem("role")
-      setUser({token: token, username: username.replace(/['"]+/g, ''), team: team.replace(/['"]+/g, ''), role: role.replace(/['"]+/g, '')})
+      setUser({token: token, username: username, team: team, role: role})
     }
     else{
       props.history.push("/signin")
@@ -111,7 +111,9 @@ function App(props) {
 
   return (
     <div className="App">
-<Header user={user} logout={logout}/>
+      <Header user={user} logout={logout}/>
+          <Route path="/signup" render={(rp => <SignUp {...rp} />)} />
+      <Route path="/signin" render={(rp => <SignIn {...rp} />)} />
       <Switch>
           {/* INDEX PAGE */}
           <Route
@@ -121,8 +123,6 @@ function App(props) {
               return <AllEmployees {...rp} employees={employees} user={user}/>;
             }}
           />
-        <Route path="/signup" render={(rp => <SignUp {...rp} />)} />
-      <Route path="/signin" render={(rp => <SignIn {...rp} />)} />
       <Route
             path="/myassignments"
             render={(rp) => {
